@@ -18,8 +18,8 @@ namespace Store
             Isbn = isbn;
             Author = author;
             Title = title;
-            Price = price;
             Description = description;
+            Price = price;
         }
 
         internal static bool IsIsbn(string s)
