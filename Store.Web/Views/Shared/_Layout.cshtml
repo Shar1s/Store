@@ -13,8 +13,25 @@
             <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Online store in C#</a>
             <form class="form-inline my-2 my-lg-0" action="@Url.Action("Index", "Search")" method="get">
                 <input class="form-control mr-sm-2" type="search" name="query" placeholder="author or title" />
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> 
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
+            <span class="navbar-text ml-auto">
+                @{
+                    Cart cart;
+                    if (!Context.Session.TryGetCart(out cart))
+                        cart = new Cart();
+
+                    if (cart.Items.Count == 0)
+                    {
+                        @:Cart is empty
+                    }
+                    else
+                    {
+                        @cart.Items.Count @:item worth @cart.Amount
+                    }
+
+                }
+            </span>
         </nav>
     </header>
     <div class="container">
@@ -23,7 +40,7 @@
         </main>
     </div>
 
-    
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
