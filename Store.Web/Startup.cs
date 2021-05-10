@@ -7,6 +7,8 @@ using Microsoft.Extensions.Hosting;
 using Store.Memmory;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -34,7 +36,9 @@ namespace Store.Web
             });
 
             services.AddSingleton<IBookRepository, BookRepository>();
+            services.AddSingleton<IOrderRepository, OrderRepository>();
             services.AddSingleton<BookService>();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
